@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Michael William — Ecosystem Contributions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#040508;--s1:#090B12;--s2:#0F1219;--s3:#161A25;--s4:#1D2230;
+  --line:rgba(255,255,255,.06);--line2:rgba(255,255,255,.11);
+  --pink:#E6007A;--pk10:rgba(230,0,122,.10);--pk20:rgba(230,0,122,.20);--pk40:rgba(230,0,122,.40);
+  --teal:#00D4AA;--tl10:rgba(0,212,170,.10);
+  --gold:#C8A44A;--gl10:rgba(200,164,74,.10);
+  --blue:#60A5FA;--bl10:rgba(96,165,250,.10);
+  --vio:#A78BFA;--vi10:rgba(167,139,250,.10);
+  --grn:#6EE7B7;--gn10:rgba(110,231,183,.10);
+  --snow:#F4F1EC;--ash:#8D8B96;--dim:#50505C;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--snow);font-family:'Syne',sans-serif;min-height:100vh;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--s4);border-radius:2px}
+::selection{background:var(--pk20)}
+a{color:inherit;text-decoration:none}
+
+/* ── Animations ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pulse{0%,100%{opacity:.6}50%{opacity:1}}
+.fu{opacity:0;animation:fadeUp .65s forwards}
+.fu0{animation-delay:.05s}.fu1{animation-delay:.18s}.fu2{animation-delay:.3s}.fu3{animation-delay:.42s}.fu4{animation-delay:.54s}
+
+/* ── Nav ── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:100;height:54px;padding:0 max(28px,5vw);display:flex;align-items:center;gap:24px;transition:all .3s ease}
+#nav.solid{background:rgba(9,11,18,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(20px)}
+.nav-logo{font-size:15px;font-family:'Syne',sans-serif;font-weight:800;letter-spacing:-.02em}
+.nav-logo span{color:var(--pink)}
+.nav-links{display:flex;gap:20px;margin-left:auto}
+.nav-link{font-size:11px;font-family:'DM Mono',monospace;color:var(--dim);transition:color .14s;cursor:pointer}
+.nav-link:hover{color:var(--snow)}
+
+/* ── Hero ── */
+#hero{min-height:100vh;padding:0 max(28px,5vw);display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.grid-bg{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:80px 80px;
+  -webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%);
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%)}
+.orb{position:absolute;border-radius:50%;pointer-events:none;z-index:0}
+.orb-pink{top:15%;right:8%;width:500px;height:500px;background:radial-gradient(circle,var(--pk10) 0%,transparent 70%)}
+.orb-teal{bottom:20%;left:3%;width:300px;height:300px;background:radial-gradient(circle,rgba(0,212,170,.07) 0%,transparent 70%)}
+.hero-inner{position:relative;z-index:1;max-width:920px;padding-top:90px}
+.status-pill{display:inline-flex;align-items:center;gap:8px;padding:5px 14px 5px 10px;border-radius:20px;border:1px solid var(--line2);margin-bottom:30px}
+.status-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px var(--teal);animation:pulse 2s infinite}
+.status-text{font-size:10px;font-family:'DM Mono',monospace;color:var(--teal);letter-spacing:.07em}
+h1.hero-title{font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(50px,9vw,100px);line-height:.93;letter-spacing:-.025em;margin-bottom:24px}
+h1.hero-title .outline{-webkit-text-stroke:1.5px var(--pink);color:transparent;display:block}
+h1.hero-title .solid{display:block}
+.hero-sub{font-size:clamp(14px,1.9vw,18px);color:var(--ash);line-height:1.65;max-width:560px;margin-bottom:44px}
+.hero-sub .hl{color:var(--snow);border-bottom:1px solid var(--pk40)}
+.stats{display:flex;flex-wrap:wrap;gap:28px 44px;margin-bottom:48px}
+.stat-val{font-size:clamp(34px,5vw,56px);font-family:'DM Serif Display',serif;font-weight:400;line-height:1}
+.stat-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--dim);letter-spacing:.1em;margin-top:4px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:8px;cursor:pointer;background:var(--pink);border:none;color:#fff;font-size:13px;font-family:'Syne',sans-serif;font-weight:700;transition:all .15s}
+.btn-primary:hover{opacity:.88;transform:translateY(-1px)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:8px;cursor:pointer;background:transparent;border:1px solid var(--line2);color:var(--snow);font-size:13px;font-family:'Syne',sans-serif;font-weight:600;transition:all .15s}
+.btn-secondary:hover{background:var(--s2)}
+.scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;animation:fadeIn 1s 1.3s both;z-index:1}
+.scroll-hint span{font-size:9px;font-family:'DM Mono',monospace;color:var(--dim);letter-spacing:.12em}
+.scroll-line{width:1px;height:30px;background:linear-gradient(var(--pink),transparent)}
+
+/* ── Featured ── */
+#featured{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:44px 0}
+.section-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--dim);letter-spacing:.12em}
+.section-label span{color:var(--pink);margin-left:12px}
+.feat-header{padding:0 max(28px,5vw);margin-bottom:20px}
+.feat-scroll{display:flex;gap:14px;overflow-x:auto;padding:0 max(28px,5vw) 4px;scrollbar-width:none}
+.feat-scroll::-webkit-scrollbar{display:none}
+.fcard{width:280px;flex-shrink:0;background:var(--s2);border:1px solid var(--line);border-top:2px solid var(--line);border-radius:12px;padding:20px 20px 16px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;transition:all .22s cubic-bezier(.16,1,.3,1);cursor:pointer}
+.fcard:hover{transform:translateY(-6px)}
+.fcard-glow{position:absolute;top:-40px;right:-40px;width:120px;height:120px;filter:blur(60px);opacity:0;border-radius:50%;transition:opacity .22s;pointer-events:none}
+.fcard:hover .fcard-glow{opacity:.1}
+.fcard-meta{display:flex;gap:6px;align-items:center}
+.badge{font-size:9px;font-family:'DM Mono',monospace;padding:2px 6px;border-radius:3px}
+.fcard-date{margin-left:auto;font-size:9px;font-family:'DM Mono',monospace;color:var(--dim)}
+.fcard-title{font-size:13.5px;font-family:'DM Serif Display',serif;font-style:italic;color:var(--snow);line-height:1.45;flex:1}
+.fcard-impact{font-size:11px;font-family:'Syne',sans-serif;color:var(--ash);line-height:1.5;border-top:1px solid var(--line);padding-top:10px}
+.fcard-footer{display:flex;align-items:center;gap:6px}
+.fcard-cat{font-size:9px}
+.fcard-org{font-size:10px;font-family:'Syne',sans-serif;color:var(--dim)}
+.fcard-link{margin-left:auto;font-size:12px;font-family:'DM Mono',monospace;color:var(--pink)}
+.cta-card{width:190px;flex-shrink:0;background:linear-gradient(135deg,var(--pk10),var(--s2));border:1px solid var(--pk20);border-radius:12px;padding:20px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.cta-card-title{font-size:18px;font-family:'DM Serif Display',serif;font-style:italic;color:var(--snow);line-height:1.25}
+.cta-card-btn{font-size:11px;font-family:'DM Mono',monospace;color:var(--pink);padding:7px 12px;background:var(--pk10);border:1px solid var(--pk20);border-radius:6px;align-self:flex-start;transition:background .14s}
+.cta-card-btn:hover{background:var(--pk20)}
+
+/* ── Archive ── */
+#archive{padding:0 max(28px,5vw) 100px}
+.archive-header{padding-top:52px;padding-bottom:24px;border-bottom:1px solid var(--line);display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.archive-title{font-size:clamp(26px,4vw,38px);font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;line-height:1.1;color:var(--snow);margin-top:8px}
+.search-wrap{position:relative}
+.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--dim);font-size:13px;pointer-events:none}
+#search{background:var(--s2);border:1px solid var(--line);border-radius:8px;color:var(--snow);font-size:12px;font-family:'Syne',sans-serif;padding:9px 14px 9px 32px;outline:none;width:190px;transition:border-color .15s}
+#search:focus{border-color:var(--pk40)}
+.archive-grid{display:grid;grid-template-columns:210px 1fr;gap:40px;padding-top:28px;align-items:start}
+/* Filters */
+.filters{position:sticky;top:68px;display:flex;flex-direction:column;gap:24px}
+.filter-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--dim);letter-spacing:.12em;margin-bottom:10px}
+.chip-list{display:flex;flex-direction:column;gap:3px}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--ash);font-size:11.5px;font-family:'Syne',sans-serif;cursor:pointer;transition:all .15s;white-space:nowrap;text-align:left}
+.chip:hover{background:var(--s2);color:var(--snow)}
+.chip.active{color:var(--activeColor,var(--snow))}
+.chip-count{font-size:9px;font-family:'DM Mono',monospace;opacity:.6;background:var(--s3);padding:1px 5px;border-radius:4px}
+.chip.active .chip-count{opacity:.7}
+.hdivider{height:1px;background:var(--line)}
+.status-legend{display:flex;flex-direction:column;gap:7px}
+.legend-row{display:flex;align-items:center;gap:8px}
+.legend-dot{width:6px;height:6px;border-radius:50%}
+.legend-label{font-size:11px;font-family:'Syne',sans-serif;color:var(--ash)}
+.legend-count{margin-left:auto;font-size:9px;font-family:'DM Mono',monospace;color:var(--dim)}
+/* Rows */
+.arow{border-bottom:1px solid var(--line);padding:14px 0;cursor:pointer;transition:all .15s;border-left:2px solid transparent;padding-left:0}
+.arow:hover{background:rgba(0,0,0,0);padding-left:10px}
+.arow.open{padding-left:10px;border-left-color:var(--rowColor,var(--teal))}
+.arow-top{display:flex;gap:12px;align-items:flex-start}
+.arow-dot{width:6px;height:6px;border-radius:50%;background:var(--dim);flex-shrink:0;margin-top:6px;transition:all .15s}
+.arow.open .arow-dot{background:var(--rowColor,var(--teal));box-shadow:0 0 8px var(--rowColor,var(--teal))}
+.arow-content{flex:1;min-width:0}
+.arow-meta{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-bottom:4px}
+.arow-org{font-size:9px;font-family:'DM Mono',monospace;color:var(--dim)}
+.arow-toggle{margin-left:auto;font-size:11px;font-family:'DM Mono',monospace;color:var(--dim);transition:color .15s}
+.arow.open .arow-toggle{color:var(--rowColor,var(--teal))}
+.arow-title{font-size:13.5px;font-family:'DM Serif Display',serif;font-style:italic;color:var(--ash);line-height:1.4;transition:color .15s}
+.arow:hover .arow-title,.arow.open .arow-title{color:var(--snow)}
+.arow-body{padding-left:18px;padding-top:12px;display:flex;flex-direction:column;gap:10px}
+.arow-desc{font-size:12px;font-family:'Syne',sans-serif;color:var(--ash);line-height:1.7}
+.impact-bar{display:flex;gap:10px;padding:8px 12px;background:var(--s3);border-radius:6px;border-left:2px solid var(--rowColor,var(--teal))}
+.impact-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--rowColor,var(--teal));flex-shrink:0;margin-top:1px}
+.impact-text{font-size:11.5px;font-family:'Syne',sans-serif;color:var(--ash);line-height:1.5}
+.view-btn{align-self:flex-start;font-size:11px;font-family:'DM Mono',monospace;color:var(--pink);padding:6px 14px;background:var(--pk10);border:1px solid var(--pk20);border-radius:6px;transition:background .14s;display:inline-block}
+.view-btn:hover{background:var(--pk20)}
+.arow-body.hidden{display:none}
+
+/* ── Trusted ── */
+#trusted{border-top:1px solid var(--line);padding:44px max(28px,5vw);text-align:center}
+.trusted-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--dim);letter-spacing:.18em;margin-bottom:28px}
+.trusted-logos{display:flex;justify-content:center;align-items:center;gap:clamp(20px,4vw,56px);flex-wrap:wrap;opacity:.28}
+.trusted-logos span{font-size:12px;font-family:'Syne',sans-serif;font-weight:800;letter-spacing:.1em}
+
+/* ── Footer ── */
+footer{border-top:1px solid var(--line);padding:32px max(28px,5vw);display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.footer-name{font-size:20px;font-family:'DM Serif Display',serif;font-style:italic;color:var(--snow);margin-bottom:4px}
+.footer-name span{color:var(--pink)}
+.footer-sub{font-size:10px;font-family:'DM Mono',monospace;color:var(--dim);letter-spacing:.06em}
+.footer-links{display:flex;gap:20px}
+.footer-link{font-size:11px;font-family:'DM Mono',monospace;color:var(--dim);transition:color .14s}
+.footer-link:hover{color:var(--snow)}
+
+/* ── Cursor glow ── */
+#glow{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+#glow-inner{position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(230,0,122,.08) 0%,transparent 65%);border-radius:50%;transition:left .1s ease-out,top .1s ease-out}
+
+@media(max-width:700px){
+  .archive-grid{grid-template-columns:1fr}
+  .filters{position:static;flex-direction:row;flex-wrap:wrap}
+  .hdivider{display:none}
+}
+</style>
+</head>
+<body>
+
+<div id="glow"><div id="glow-inner"></div></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">MIKE<span>.</span>WILL</div>
+  <div class="nav-links">
+    <a class="nav-link" href="https://x.com/mikedotwill" target="_blank">Twitter/X ↗</a>
+    <a class="nav-link" href="https://www.linkedin.com/in/michael-william" target="_blank">LinkedIn ↗</a>
+    <a class="nav-link" href="https://read.cv/michael.william" target="_blank">Resume ↗</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="grid-bg"></div>
+  <div class="orb orb-pink"></div>
+  <div class="orb orb-teal"></div>
+  <div class="hero-inner">
+    <div class="status-pill fu fu0">
+      <span class="status-dot"></span>
+      <span class="status-text">AVAILABLE FOR STRATEGIC PARTNERSHIPS</span>
+    </div>
+    <h1 class="hero-title fu fu1">
+      <span class="solid">Ecosystem</span>
+      <span class="outline">Growth</span>
+      <span class="solid">&amp; Community.</span>
+    </h1>
+    <p class="hero-sub fu fu2">
+      Building the systems that turn audiences into communities, content into acquisition pipelines,
+      and blockchain protocols into traction — across the
+      <span class="hl">Polkadot ecosystem</span> and <span class="hl">West Africa</span>.
+    </p>
+    <div class="stats fu fu3">
+      <div><div class="stat-val" style="color:var(--pink)" data-count="49">0</div><div class="stat-label">CONTRIBUTIONS</div></div>
+      <div><div class="stat-val" style="color:var(--teal)" data-count="11">0</div><div class="stat-label">ORGANISATIONS</div></div>
+      <div><div class="stat-val" data-count="4" data-suffix="+">0</div><div class="stat-label">YEARS WEB3</div></div>
+      <div><div class="stat-val" style="color:var(--gold)" data-count="3">0</div><div class="stat-label">CITIES, W. AFRICA</div></div>
+    </div>
+    <div class="cta-row fu fu4">
+      <button class="btn-primary" onclick="document.getElementById('archive').scrollIntoView({behavior:'smooth'})">View All Work ↓</button>
+      <a class="btn-secondary" href="https://x.com/mikedotwill" target="_blank">Twitter / X ↗</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- FEATURED -->
+<section id="featured">
+  <div class="feat-header">
+    <span class="section-label">FEATURED WORK <span id="feat-count"></span></span>
+  </div>
+  <div class="feat-scroll" id="feat-scroll">
+    <!-- injected by JS -->
+    <div class="cta-card">
+      <div class="cta-card-title">Ready to scale your ecosystem?</div>
+      <a class="cta-card-btn" href="https://x.com/mikedotwill" target="_blank">Let's talk ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHIVE -->
+<section id="archive">
+  <div class="archive-header">
+    <div>
+      <div class="section-label">FULL ARCHIVE</div>
+      <div class="archive-title" id="archive-count">49 Contributions</div>
+    </div>
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span>
+      <input id="search" placeholder="Search work…" oninput="filterRows()"/>
+    </div>
+  </div>
+  <div class="archive-grid">
+    <div class="filters">
+      <div>
+        <div class="filter-label">TYPE</div>
+        <div class="chip-list" id="cat-filters"></div>
+      </div>
+      <div class="hdivider"></div>
+      <div>
+        <div class="filter-label">ORGANISATION</div>
+        <div class="chip-list" id="org-filters"></div>
+      </div>
+      <div class="hdivider"></div>
+      <div>
+        <div class="filter-label">STATUS</div>
+        <div class="status-legend" id="status-legend"></div>
+      </div>
+    </div>
+    <div id="rows-list"></div>
+  </div>
+</section>
+
+<!-- TRUSTED -->
+<section id="trusted">
+  <div class="trusted-label">TRUSTED CONTRIBUTOR &amp; STRATEGIST FOR</div>
+  <div class="trusted-logos">
+    <span>POLKADOT</span><span>WAGMEDIA</span><span>SPHERIUM</span>
+    <span>NEXTBRIDGE</span><span>DOTSPAWN</span><span>QITMEER</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-name">Michael William<span>.</span></div>
+    <div class="footer-sub">Web3 Community Manager · Growth Strategist · Polkadot Ecosystem</div>
+  </div>
+  <div class="footer-links">
+    <a class="footer-link" href="https://x.com/mikedotwill" target="_blank">Twitter/X ↗</a>
+    <a class="footer-link" href="https://www.linkedin.com/in/michael-william" target="_blank">LinkedIn ↗</a>
+    <a class="footer-link" href="https://read.cv/michael.william" target="_blank">Resume ↗</a>
+  </div>
+</footer>
+
+<script>
+const CMAP={Article:"edu",Research:"edu",Thread:"edu",Playbook:"com",Framework:"com","Case Study":"gro",Campaign:"gro",Partnership:"bd",Analysis:"res",Recap:"ops",Report:"ops"};
+const CATS={edu:{label:"Education",color:"#60A5FA",bg:"rgba(96,165,250,.10)",icon:"◉"},com:{label:"Community",color:"#A78BFA",bg:"rgba(167,139,250,.10)",icon:"◆"},gro:{label:"Growth",color:"#00D4AA",bg:"rgba(0,212,170,.10)",icon:"▲"},bd:{label:"Partnerships",color:"#E6007A",bg:"rgba(230,0,122,.10)",icon:"⟷"},res:{label:"Research",color:"#C8A44A",bg:"rgba(200,164,74,.10)",icon:"◎"},ops:{label:"Operations",color:"#6EE7B7",bg:"rgba(110,231,183,.10)",icon:"≡"}};
+const ORG={polkadot:"Polkadot Ecosystem",wagmedia:"WagMedia",dotspawn:"DOTSpawn",spherium:"Spherium Finance",atomic:"Atomic Labs",nextbridge:"Nextbridge × Polkadot Africa",qitmeer:"Qitmeer Network",feoverse:"Feoverse NFT",treazure:"Treazure NFT",projects:"Independent Projects",independent:"Independent Writing"};
+const TC={Article:{bg:"rgba(96,165,250,.10)",c:"#93C5FD"},Research:{bg:"rgba(167,139,250,.10)",c:"#C4B5FD"},Thread:{bg:"rgba(200,164,74,.10)",c:"#D4AA50"},Playbook:{bg:"rgba(0,212,170,.10)",c:"#6EE7B7"},Framework:{bg:"rgba(167,139,250,.10)",c:"#C4B5FD"},"Case Study":{bg:"rgba(0,212,170,.10)",c:"#6EE7B7"},Campaign:{bg:"rgba(230,0,122,.10)",c:"#F472B6"},Partnership:{bg:"rgba(230,0,122,.10)",c:"#F472B6"},Analysis:{bg:"rgba(200,164,74,.10)",c:"#D4AA50"},Recap:{bg:"rgba(96,165,250,.10)",c:"#93C5FD"},Report:{bg:"rgba(96,165,250,.10)",c:"#93C5FD"}};
+const ST={published:{c:"#00D4AA",bg:"rgba(0,212,170,.10)",l:"Published"},live:{c:"#E6007A",bg:"rgba(230,0,122,.10)",l:"Live"},draft:{c:"#50505C",bg:"rgba(80,80,92,.15)",l:"Draft"}};
+const fmtDate=d=>{if(!d)return"";const[y,m]=d.split("-");return`${["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][+m]} '${y.slice(2)}`};
+
+const ITEMS=[
+  {id:"w1",org:"wagmedia",type:"Article",date:"2024-03",status:"published",href:"https://x.com/mikedotwill",f:true,title:"Polkadot's Shared Security Explained: What It Means for Every Project Building in the Ecosystem",desc:"Ground-up explanation of how Polkadot's relay chain distributes security to parachains — validator sets, the parachain slot model, and why shared security lowers the attack surface.",impact:"Flagship onboarding piece — reduces evaluation friction across the ecosystem"},
+  {id:"w2",org:"wagmedia",type:"Article",date:"2023-11",status:"published",href:"https://x.com/mikedotwill",f:false,title:"DeFi on Polkadot: A Practical Guide to the Ecosystem's Active Protocols",desc:"Hands-on DeFi landscape overview — Acala, HydraDX, Bifrost, and Parallel Finance for community members moving capital into the ecosystem.",impact:"Capital-activation content — bridges knowledge gap to first on-chain participation"},
+  {id:"w3",org:"wagmedia",type:"Article",date:"2023-08",status:"published",href:"https://x.com/mikedotwill",f:false,title:"What Is a Parachain? A Complete Explainer for New Polkadot Community Members",desc:"From-scratch educational piece on the parachain model — slot auctions, crowdloans, and the lifecycle from auction to deployment.",impact:"Top-of-funnel education — addresses the #1 new member knowledge gap"},
+  {id:"w4",org:"wagmedia",type:"Research",date:"2023-06",status:"published",href:"https://x.com/mikedotwill",f:false,title:"Substrate Framework: A Non-Engineer's Guide to What It Is and Why It Matters",desc:"Community-facing research demystifying Substrate — what it enables, why Polkadot and Kusama are built on it, and what it means for ecosystem growth.",impact:"Technical literacy resource — enables non-engineers to advocate accurately"},
+  {id:"w5",org:"wagmedia",type:"Article",date:"2023-09",status:"published",href:"https://x.com/mikedotwill",f:false,title:"NFTs on Polkadot: The Infrastructure Layer Beyond the Hype",desc:"Analysis of Polkadot's NFT infrastructure — RMRK Protocol, Unique Network, XCM composability. Honest assessment of what the ecosystem does differently.",impact:"Credibility-building analysis — honest framing over promotional positioning"},
+  {id:"w6",org:"wagmedia",type:"Article",date:"2024-01",status:"published",href:"https://x.com/mikedotwill",f:false,title:"XCM: How Polkadot's Cross-Chain Messaging Works and Why It Changes the DeFi Equation",desc:"Plain-language breakdown of XCM — what it does, how assets move between parachains, and why this matters for DeFi composability.",impact:"Demystifies the most-announced but least-understood Polkadot feature"},
+  {id:"w7",org:"wagmedia",type:"Article",date:"2023-07",status:"published",href:"https://x.com/mikedotwill",f:false,title:"Polkadot Staking Guide: Nominated Proof-of-Stake Explained for DOT Holders",desc:"Step-by-step NPoS staking guide — nominator-validator relationship, era rewards, unbonding period, and validator selection criteria.",impact:"High-search guide — converts passive DOT holders to active stakers"},
+  {id:"w8",org:"wagmedia",type:"Article",date:"2024-05",status:"published",href:"https://x.com/mikedotwill",f:false,title:"OpenGov on Polkadot: How the Community Now Controls the Protocol",desc:"Explainer on the Gov1 → OpenGov transition — origin tracks, conviction voting, Treasury role, and how any DOT holder can now vote.",impact:"Governance participation driver — converts readers into active participants"},
+  {id:"w9",org:"wagmedia",type:"Article",date:"2023-10",status:"published",href:"https://x.com/mikedotwill",f:false,title:"Polkadot Treasury: How the Ecosystem Funds Its Own Development",desc:"How the Polkadot Treasury accumulates funds, the proposal and bounty systems, and how community members can access funding decisions.",impact:"Funding literacy — enables builders to access Treasury resources"},
+  {id:"w10",org:"wagmedia",type:"Article",date:"2023-05",status:"published",href:"https://x.com/mikedotwill",f:false,title:"Kusama: Polkadot's Canary Network and Why It's More Than a Testnet",desc:"Positions Kusama accurately — live value-bearing network with its own community and governance, covering the KSM/DOT relationship.",impact:"Reframes a misunderstood ecosystem pillar — drives Kusama engagement"},
+  {id:"w11",org:"wagmedia",type:"Recap",date:"2024-09",status:"published",href:"https://x.com/mikedotwill",f:false,title:"New Member Onboarding Cohort — Engagement Outcomes and What We Learned",desc:"Post-engagement recap — most common questions, most effective resources, and changes made to the onboarding flow based on cohort feedback.",impact:"Iterative improvement — template for cohort-based community entry"},
+  {id:"p1",org:"polkadot",type:"Recap",date:"2025-03",status:"published",href:"https://x.com/mikedotwill",f:true,title:"West Africa Web3 Onboarding Initiative — Q1 2025 Summary Report",desc:"5 projects supported through Polkadot ecosystem entry, 10+ Spaces hosted, community infrastructure in Lagos, Accra, and Abuja.",impact:"5 projects onboarded · 10+ Spaces · 3-city infrastructure deployed"},
+  {id:"p2",org:"polkadot",type:"Playbook",date:"2024-06",status:"published",href:"https://x.com/mikedotwill",f:true,title:"Polkadot Ecosystem Entry Playbook: 7 Steps for New Projects Joining the Network",desc:"Operational framework from 5+ real project onboardings — community setup, content calendar, governance participation, and ecosystem media.",impact:"Scalable onboarding system — reused across 5+ ecosystem project entries"},
+  {id:"p3",org:"polkadot",type:"Recap",date:"2024-11",status:"published",href:"https://x.com/mikedotwill",f:false,title:"10 Spaces Sessions: What the Polkadot Community Is Actually Talking About",desc:"Synthesised insights from 10+ hosted Twitter Spaces — recurring questions, highest-attendance topics, governance debates, and education gaps.",impact:"Intelligence document — informs the next phase of ecosystem education"},
+  {id:"p4",org:"polkadot",type:"Thread",date:"2024-07",status:"published",href:"https://x.com/mikedotwill",f:false,title:"Why OpenGov Is Polkadot's Most Significant Governance Upgrade — and Why Most Community Members Don't Know It Yet",desc:"Thread tracing Gov1 → OpenGov — removal of Council, origin tracks, conviction voting, call to first referendum.",impact:"Governance activation thread — drives direct participation"},
+  {id:"p5",org:"polkadot",type:"Report",date:"2025-01",status:"published",href:"https://x.com/mikedotwill",f:false,title:"West Africa Polkadot Community Health Report — Active Engagement Across 3 Cities",desc:"Quarterly snapshot — member counts in Lagos, Accra, and Abuja, event attendance, content patterns, and top participation barriers.",impact:"Regional data record — evidence base for West Africa ecosystem investment"},
+  {id:"p6",org:"polkadot",type:"Analysis",date:"2024-10",status:"published",href:"https://x.com/mikedotwill",f:false,title:"Why Web3 Adoption in West Africa Needs Different Onboarding Infrastructure Than the West",desc:"Structural analysis of why Western frameworks underperform in West African markets — mobile-first access, data costs, trust dynamics.",impact:"Strategic differentiator — West Africa expertise as a genuine moat"},
+  {id:"d1",org:"dotspawn",type:"Case Study",date:"2024-10",status:"published",href:null,f:true,title:"How and Why I Founded DOTSpawn: Building Regional Web3 Creative Infrastructure on Polkadot",desc:"Complete founding narrative — the gap DOTSpawn fills, first infrastructure decisions, initial cohort assembled across multiple African cities.",impact:"Founding record — proof of community infrastructure created from scratch"},
+  {id:"d2",org:"dotspawn",type:"Framework",date:"2024-08",status:"published",href:null,f:false,title:"DOTSpawn Community Constitution v2 — Governance, Membership, and Operating Standards",desc:"Living governance document: membership tiers, contribution expectations, moderation framework, recognition structure, and amendment process.",impact:"Institutional infrastructure — governs a multi-city creative collective"},
+  {id:"d3",org:"dotspawn",type:"Playbook",date:"2025-01",status:"published",href:null,f:false,title:"DOTSpawn Regional Ambassador Activation Playbook",desc:"How DOTSpawn activates ambassadors across Lagos, Accra, Abuja — selection, onboarding, weekly expectations, and escalation protocols.",impact:"Ambassador system — decentralised city-level representation across West Africa"},
+  {id:"d4",org:"dotspawn",type:"Report",date:"2025-02",status:"published",href:null,f:false,title:"DOTSpawn Community Operations Report — First Full Year of Activity",desc:"Annual summary: member growth, city-by-city breakdown, content output, ecosystem integrations, and honest assessment of remaining needs.",impact:"Track record document — year-one proof of regional collective operations"},
+  {id:"s1",org:"spherium",type:"Campaign",date:"2023-11",status:"published",href:"https://x.com/mikedotwill",f:true,title:"Spherium DeFi Education Series: 8-Month Content Calendar and Platform Strategy",desc:"Full content operation — 3-platform calendar (Twitter/X, Telegram, Medium), content distribution, and how content supported HyperBridge's product narrative.",impact:"8-month content operation · 3 platforms · weekly cadence sustained"},
+  {id:"s2",org:"spherium",type:"Article",date:"2023-05",status:"published",href:"https://x.com/mikedotwill",f:false,title:"HyperBridge Explained: How Spherium's Cross-Chain Bridge Works and Why It Matters",desc:"Educational explainer on HyperBridge's cross-chain liquidity routing, supported chains, user flow, and why it differs from standard DEX swaps.",impact:"Product education — reduces support volume, drives informed adoption"},
+  {id:"s3",org:"spherium",type:"Article",date:"2023-07",status:"published",href:"https://x.com/mikedotwill",f:false,title:"SphereX DEX Guide: Providing Liquidity and Earning on Spherium's Native Exchange",desc:"Step-by-step guide to SphereX — wallet connection, liquidity provision mechanics, impermanent loss, and fee reward structure.",impact:"User activation guide — reduces friction for first-time liquidity providers"},
+  {id:"s4",org:"spherium",type:"Framework",date:"2023-09",status:"published",href:"https://x.com/mikedotwill",f:false,title:"Spherium Ecosystem Partnership Outreach Framework — Strategy Behind 4 Collaboration Campaigns",desc:"BD methodology — target identification, outreach structure, follow-up cadence, and how each partnership was packaged for announcement.",impact:"4+ partnerships facilitated — repeatable BD framework developed"},
+  {id:"s5",org:"spherium",type:"Thread",date:"2023-06",status:"published",href:"https://x.com/mikedotwill",f:false,title:"Cross-Chain DeFi Is the Next Frontier — Here's Why Spherium's Multi-Chain Approach Gets It Right",desc:"Positioning thread — single-chain DeFi structural limits and how HyperBridge's unified liquidity layer addresses them.",impact:"Brand narrative thread — drives ecosystem awareness and growth"},
+  {id:"a1",org:"atomic",type:"Case Study",date:"2025-02",status:"live",href:"https://x.com/atomic_bags?s=20",f:true,title:"Atomic Labs Growth Architecture: From Product Vision to Audience Action",desc:"Ongoing documentation of the full growth operation — strategy scope, content system, UX positioning, and content-to-conversion mechanics.",impact:"Live growth operation — translating product vision to audience behaviour"},
+  {id:"a2",org:"atomic",type:"Framework",date:"2025-01",status:"live",href:"https://x.com/atomic_bags?s=20",f:false,title:"Atomic Labs Content-to-Conversion System: How Product Narrative Becomes Audience Behaviour",desc:"Internal framework mapping content to audience journey stages — discovery, education, trust, activation — with cadence and performance tracking.",impact:"Systems architecture — content operation governed by conversion logic"},
+  {id:"a3",org:"atomic",type:"Thread",date:"2024-12",status:"published",href:"https://x.com/atomic_bags?s=20",f:false,title:"What Atomic Labs Is Building and Why the Approach to Product Storytelling Is Different",desc:"Launch narrative thread — the problem it solves, why existing solutions fall short, and the Atomic approach. Anchor content for community growth.",impact:"Category positioning — establishes product identity at launch stage"},
+  {id:"n1",org:"nextbridge",type:"Partnership",date:"2025-04",status:"published",href:"https://x.com/nextbridge_afr/status/1981662061810593951?s=20",f:true,title:"Nextbridge × Polkadot Africa: How the Partnership Was Built and What It Unlocks",desc:"Full account — strategic alignment identified, first contact initiated, framework structured, and formal announcement communicated across both channels.",impact:"Cross-ecosystem partnership — two regional organisations formally aligned"},
+  {id:"n2",org:"nextbridge",type:"Thread",date:"2025-04",status:"published",href:"https://x.com/nextbridge_afr/status/1981662061810593951?s=20",f:false,title:"Why the Nextbridge × Polkadot Africa Partnership Matters for Web3 in the Region",desc:"Announcement thread contextualising the partnership — what each organisation represents and what both communities can expect.",impact:"Partnership communications — reaches combined audience of both organisations"},
+  {id:"n3",org:"nextbridge",type:"Analysis",date:"2025-05",status:"draft",href:null,f:false,title:"Ecosystem Mapping: How to Identify Partnership Targets in the Polkadot Ecosystem",desc:"Repeatable framework for identifying partnership candidates — evaluation dimensions, ecosystem map methodology, and first-outreach structure.",impact:"BD methodology — turns one partnership into a repeatable sourcing system"},
+  {id:"q1",org:"qitmeer",type:"Article",date:"2023-05",status:"published",href:"https://x.com/mikedotwill",f:true,title:"What Is Qitmeer? A Plain-Language Guide to the Network's Technology and Vision",desc:"From-scratch explainer on Qitmeer — UTXO architecture, BlockDAG consensus, compliance-forward design, for a non-technical Nigerian audience.",impact:"First-impression content — credibility-first introduction for a regional community"},
+  {id:"q2",org:"qitmeer",type:"Article",date:"2023-06",status:"published",href:"https://x.com/mikedotwill",f:false,title:"BlockDAG vs Blockchain: Why Qitmeer's Architecture Solves Scalability Differently",desc:"Technical education on BlockDAG vs standard blockchain — parallel block confirmation, SPECTRE consensus protocol, and implications for throughput.",impact:"Technical differentiation content — explains the core architectural advantage"},
+  {id:"q3",org:"qitmeer",type:"Campaign",date:"2023-07",status:"published",href:"https://x.com/mikedotwill",f:false,title:"Qitmeer Nigeria Community Engagement Campaign: From 0 to 500+ Active Members",desc:"Platform strategy, content sequence for the first 200 members, engagement mechanics driving a 3× interaction lift, and the moderation framework.",impact:"500+ member community built · 3× engagement lift · 90-day campaign"},
+  {id:"q4",org:"qitmeer",type:"Thread",date:"2023-05",status:"published",href:"https://x.com/mikedotwill",f:false,title:"Why Qitmeer's Compliance-First Approach Is a Strategic Advantage — Not a Limitation",desc:"Counter-narrative thread repositioning Qitmeer's regulatory design as competitive in Nigeria's regulatory climate.",impact:"Narrative repositioning — turns perceived limitation into market advantage"},
+  {id:"f1",org:"feoverse",type:"Campaign",date:"2023-03",status:"published",href:"https://x.com/mikedotwill",f:true,title:"Feoverse NFT Launch Campaign — Content Strategy Across 2 Drop Cycles",desc:"Full campaign — pre-mint hype sequence, mint-day cadence, post-mint retention. 15+ pieces mapped to launch funnel stages across two cycles.",impact:"15+ pieces across 2 launch cycles · full-funnel execution"},
+  {id:"f2",org:"feoverse",type:"Thread",date:"2023-02",status:"published",href:"https://x.com/mikedotwill",f:false,title:"Why Feoverse Is Building More Than a Collection — The World Behind the NFTs",desc:"World-building narrative thread differentiating Feoverse in a saturated NFT market by leading with the conceptual universe over speculation.",impact:"Brand differentiation — story-led positioning in a commoditised market"},
+  {id:"f3",org:"feoverse",type:"Article",date:"2023-03",status:"published",href:"https://x.com/mikedotwill",f:false,title:"Feoverse Holder Guide: What Ownership Unlocks and What's Coming Next",desc:"Post-mint educational piece — utility structure, Discord tier system, roadmap commitments, and governance participation.",impact:"Holder retention tool — reduces post-mint churn by establishing participation"},
+  {id:"t1",org:"treazure",type:"Report",date:"2022-12",status:"published",href:"https://x.com/mikedotwill",f:true,title:"Treazure NFT — 5-Month Community Operations Summary",desc:"Full retrospective — content calendar, publishing cadence, community growth to 400+ holders, and trust maintained during the 2022 NFT market decline.",impact:"400+ member community maintained over 5 months through bear market"},
+  {id:"t2",org:"treazure",type:"Framework",date:"2022-10",status:"published",href:"https://x.com/mikedotwill",f:false,title:"Treazure NFT Community Communication Framework — Team-to-Holder Transparency System",desc:"Communication architecture — update formatting, FUD response framework, escalation path, and transparency as a retention mechanism.",impact:"Transparency system — maintained holder trust through market decline"},
+  {id:"t3",org:"treazure",type:"Campaign",date:"2022-11",status:"published",href:"https://x.com/mikedotwill",f:false,title:"Treazure Holder Retention Campaign — Keeping Community Active Through Bear Market Conditions",desc:"Bear market engagement — content formats, Discord role structure, and week-over-week community health tracking.",impact:"Bear market retention — engagement held through sustained decline"},
+  {id:"pr1",org:"projects",type:"Case Study",date:"2024-05",status:"published",href:"https://dorahacks.io/buidl/21100",f:true,title:"DotVest Retention Framework: The Strategy Behind a Polkadot Hackathon Win",desc:"Winning retention strategy — drop-off analysis, onboarding-to-engagement loop design, milestone-based re-engagement mechanics.",impact:"Polkadot hackathon winning contribution · retention built from first principles"},
+  {id:"pr2",org:"projects",type:"Analysis",date:"2024-04",status:"published",href:"https://dorahacks.io/buidl/21100",f:false,title:"Funnel Drop-Off in Web3 Apps: Where Users Leave and What Brings Them Back",desc:"Research mapping 5 drop-off stages — wallet friction, transaction cost shock, empty state, notification opt-out, missing social proof — with re-engagement mechanics.",impact:"Research foundation for DotVest — applicable across Web3 products"},
+  {id:"i1",org:"independent",type:"Analysis",date:"2024-04",status:"draft",href:null,f:false,title:"Community Is Not a Channel — It's Infrastructure: Why Web3 Projects Keep Getting This Wrong",desc:"Strategic piece arguing community as distribution channel rather than product infrastructure is why Web3 projects fail to retain users past 30 days.",impact:"Signature POV piece — establishes positioning above practitioner level"},
+  {id:"i2",org:"independent",type:"Thread",date:"2024-06",status:"published",href:"https://x.com/mikedotwill",f:false,title:"The 3 Mistakes Every New Web3 Community Manager Makes in Week One",desc:"Distilled from 2+ years and 6+ projects — over-investing in Discord architecture, treating onboarding as one-time, measuring activity over engagement quality.",impact:"High-share practitioner content — establishes CM expertise publicly"},
+  {id:"i3",org:"independent",type:"Analysis",date:"2024-08",status:"draft",href:null,f:true,title:"Why Web3 Community Growth in Emerging Markets Requires a Different Playbook Entirely",desc:"First-hand analysis of why standard Web3 growth tactics underperform in West African markets — constraints, scam saturation, and what actually drives participation.",impact:"Flagship differentiation piece — turns regional expertise into exportable insight"},
+  {id:"i4",org:"independent",type:"Thread",date:"2024-12",status:"published",href:"https://x.com/mikedotwill",f:false,title:"What 10 Spaces Sessions Taught Me About What Web3 Communities Actually Need",desc:"Reflective synthesis from 10+ hosted Spaces — 4 knowledge gaps surfacing in almost every session and why they represent a systemic education failure.",impact:"Pattern intelligence — turns hosting experience into public insight"},
+];
+
+/* ── State ── */
+let activeCat="all", activeOrg="all", openId=null;
+
+/* ── Cursor glow ── */
+const glowEl=document.getElementById("glow-inner");
+document.addEventListener("mousemove",e=>{glowEl.style.left=(e.clientX-350)+"px";glowEl.style.top=(e.clientY-350)+"px";});
+
+/* ── Nav scroll ── */
+window.addEventListener("scroll",()=>{document.getElementById("nav").classList.toggle("solid",window.scrollY>60);},{ passive:true});
+
+/* ── Counter animation ── */
+function animateCounters(){
+  document.querySelectorAll("[data-count]").forEach(el=>{
+    const to=+el.dataset.count, suf=el.dataset.suffix||"";
+    let start=null;
+    const tick=ts=>{if(!start)start=ts; const p=Math.min((ts-start)/1100,1); const e=1-Math.pow(1-p,3); el.textContent=Math.round(e*to)+suf; if(p<1)requestAnimationFrame(tick);};
+    requestAnimationFrame(tick);
+  });
+}
+const statsObs=new IntersectionObserver(([e])=>{if(e.isIntersecting){animateCounters();statsObs.disconnect();}},{threshold:.5});
+statsObs.observe(document.querySelector(".stats"));
+
+/* ── Build featured cards ── */
+const featScroll=document.getElementById("feat-scroll");
+const ctaCard=featScroll.querySelector(".cta-card");
+const featured=ITEMS.filter(i=>i.f);
+document.getElementById("feat-count").textContent=featured.length+" selected";
+featured.forEach(item=>{
+  const cat=CATS[CMAP[item.type]||"edu"]; const tc=TC[item.type]||TC.Article; const st=ST[item.status];
+  const card=document.createElement("div");
+  card.className="fcard";
+  if(item.href)card.style.cursor="pointer";
+  card.innerHTML=`
+    <div class="fcard-glow" style="background:${cat.color}"></div>
+    <div class="fcard-meta">
+      <span class="badge" style="background:${tc.bg};color:${tc.c}">${item.type}</span>
+      <span class="badge" style="background:${st.bg};color:${st.c}">${st.l}</span>
+      <span class="fcard-date">${fmtDate(item.date)}</span>
+    </div>
+    <div class="fcard-title">${item.title}</div>
+    <div class="fcard-impact">${item.impact}</div>
+    <div class="fcard-footer">
+      <span class="fcard-cat" style="color:${cat.color}">${cat.icon}</span>
+      <span class="fcard-org">${ORG[item.org]}</span>
+      ${item.href?`<span class="fcard-link">↗</span>`:""}
+    </div>`;
+  card.style.setProperty("--cat",cat.color);
+  card.addEventListener("mouseenter",()=>{card.style.background="var(--s3)";card.style.borderColor=cat.color+"35";card.style.borderTopColor=cat.color;card.style.transform="translateY(-6px)";});
+  card.addEventListener("mouseleave",()=>{card.style.background="var(--s2)";card.style.borderColor="var(--line)";card.style.borderTopColor="var(--line)";card.style.transform="none";});
+  if(item.href)card.addEventListener("click",()=>window.open(item.href,"_blank"));
+  featScroll.insertBefore(card,ctaCard);
+});
+
+/* ── Build filters ── */
+function buildCatFilters(){
+  const el=document.getElementById("cat-filters"); el.innerHTML="";
+  const all=document.createElement("button"); all.className="chip"+(activeCat==="all"?" active":"");
+  all.style.setProperty("--activeColor","var(--snow)");
+  const allCount=activeOrg==="all"?ITEMS.length:ITEMS.filter(i=>i.org===activeOrg).length;
+  all.innerHTML=`All <span class="chip-count">${allCount}</span>`;
+  all.onclick=()=>{activeCat="all";render();};
+  el.appendChild(all);
+  Object.entries(CATS).forEach(([k,v])=>{
+    const base=activeOrg==="all"?ITEMS:ITEMS.filter(i=>i.org===activeOrg);
+    const count=base.filter(i=>(CMAP[i.type]||"edu")===k).length;
+    const btn=document.createElement("button"); btn.className="chip"+(activeCat===k?" active":"");
+    btn.style.setProperty("--activeColor",v.color);
+    if(activeCat===k){btn.style.borderColor=v.color+"50";btn.style.background=v.color+"12";btn.style.color=v.color;}
+    btn.innerHTML=`<span style="font-size:10px">${v.icon}</span>${v.label} <span class="chip-count">${count}</span>`;
+    btn.onclick=()=>{activeCat=activeCat===k?"all":k;render();};
+    el.appendChild(btn);
+  });
+}
+
+function buildOrgFilters(){
+  const el=document.getElementById("org-filters"); el.innerHTML="";
+  const orgsUsed=[...new Set(ITEMS.map(i=>i.org))];
+  const all=document.createElement("button"); all.className="chip"+(activeOrg==="all"?" active":"");
+  all.style.setProperty("--activeColor","var(--ash)");
+  all.textContent="All Orgs";
+  all.onclick=()=>{activeOrg="all";render();};
+  el.appendChild(all);
+  orgsUsed.forEach(o=>{
+    const btn=document.createElement("button"); btn.className="chip"+(activeOrg===o?" active":"");
+    btn.style.setProperty("--activeColor","var(--ash)");
+    if(activeOrg===o){btn.style.borderColor="rgba(141,139,150,.5)";btn.style.background="rgba(141,139,150,.12)";}
+    btn.textContent=ORG[o];
+    btn.onclick=()=>{activeOrg=activeOrg===o?"all":o;render();};
+    el.appendChild(btn);
+  });
+}
+
+function buildStatusLegend(){
+  const el=document.getElementById("status-legend"); el.innerHTML="";
+  Object.values(ST).forEach(s=>{
+    const count=ITEMS.filter(i=>i.status===s.l.toLowerCase()).length;
+    el.innerHTML+=`<div class="legend-row"><div class="legend-dot" style="background:${s.c};box-shadow:0 0 5px ${s.c}"></div><span class="legend-label">${s.l}</span><span class="legend-count">${count}</span></div>`;
+  });
+}
+
+function filterRows(){
+  const q=document.getElementById("search").value.toLowerCase();
+  const list=ITEMS.filter(item=>{
+    if(activeCat!=="all"&&(CMAP[item.type]||"edu")!==activeCat)return false;
+    if(activeOrg!=="all"&&item.org!==activeOrg)return false;
+    if(q&&!item.title.toLowerCase().includes(q)&&!item.desc.toLowerCase().includes(q))return false;
+    return true;
+  });
+  document.getElementById("archive-count").textContent=list.length+" Contributions";
+  buildRows(list);
+}
+
+function buildRows(list){
+  const el=document.getElementById("rows-list"); el.innerHTML="";
+  if(!list.length){el.innerHTML=`<div style="padding:56px 0;text-align:center;color:var(--dim);font-family:'DM Mono',monospace;font-size:12px">No contributions match this filter.</div>`;return;}
+  list.forEach(item=>{
+    const cat=CATS[CMAP[item.type]||"edu"]; const tc=TC[item.type]||TC.Article;
+    const row=document.createElement("div");
+    row.className="arow"+(openId===item.id?" open":"");
+    row.style.setProperty("--rowColor",cat.color);
+    row.innerHTML=`
+      <div class="arow-top">
+        <div class="arow-dot"></div>
+        <div class="arow-content">
+          <div class="arow-meta">
+            <span class="badge" style="background:${tc.bg};color:${tc.c}">${item.type}</span>
+            <span class="arow-org">${ORG[item.org]} · ${fmtDate(item.date)}</span>
+            <span class="arow-toggle">${openId===item.id?"−":"+"}</span>
+          </div>
+          <div class="arow-title">${item.title}</div>
+        </div>
+      </div>
+      <div class="arow-body${openId===item.id?"":" hidden"}">
+        <p class="arow-desc">${item.desc}</p>
+        <div class="impact-bar">
+          <span class="impact-label">IMPACT</span>
+          <span class="impact-text">${item.impact}</span>
+        </div>
+        ${item.href?`<a class="view-btn" href="${item.href}" target="_blank" onclick="event.stopPropagation()">View Work ↗</a>`:""}
+      </div>`;
+    row.addEventListener("click",()=>{openId=openId===item.id?null:item.id;filterRows();});
+    el.appendChild(row);
+  });
+}
+
+function render(){buildCatFilters();buildOrgFilters();filterRows();}
+buildStatusLegend();
+render();
+</script>
+</body>
+</html>
